@@ -72,10 +72,18 @@ public:
         timestamp = time;
         next = nxt;
     }
-    string getAction() const { return action; }
-    string getTimestamp() const { return timestamp; }
-    void setAction(string act) { action = act; }
-    void setTimestamp(string time) { timestamp = time; }
+    string getAction() const{
+        return action;
+    }
+    string getTimestamp()const{
+        return timestamp;
+    }
+    void setAction(string act){
+        action = act;
+    }
+    void setTimestamp(string time){
+        timestamp = time;
+    }
 };
 // Medicine Node for Linked List
 class MedicineNode {
@@ -94,15 +102,31 @@ public:
         next = nxt;
     }
     // Getters
-    int getId() const { return id; }
-    string getName() const { return name; }
-    int getQuantity() const { return quantity; }
-    double getPrice() const { return price; }
+    int getId() const{
+        return id;
+    }
+    string getName() const{
+        return name;
+    }
+    int getQuantity() const{
+        return quantity;
+    }
+    double getPrice() const{
+        return price;
+    }
     // Setters
-    void setId(int i) { id = i; }
-    void setName(string n) { name = n; }
-    void setQuantity(int q) { quantity = q; }
-    void setPrice(double p) { price = p; }
+    void setId(int i){
+        id = i;
+    }
+    void setName(string n){
+        name = n;
+    }
+    void setQuantity(int q){
+        quantity = q;
+    }
+    void setPrice(double p){
+        price = p;
+    }
 };
 // Bill Node for Linked List
 class BillNode {
@@ -123,17 +147,37 @@ public:
         next = nxt;
     } 
     // Getters
-    int getBillID() const { return billID; }
-    string getPatientName() const { return patientName; }
-    string getItemsDetails() const { return itemsDetails; }
-    double getTotalAmount() const { return totalAmount; }
-    bool getIsPaid() const { return isPaid; } 
+    int getBillID() const{
+        return billID;
+    }
+    string getPatientName() const{
+        return patientName;
+    }
+    string getItemsDetails() const{
+        return itemsDetails;
+    }
+    double getTotalAmount() const {
+        return totalAmount;
+    }
+    bool getIsPaid() const{
+        return isPaid;
+    } 
     // Setters
-    void setBillID(int id) { billID = id; }
-    void setPatientName(string pName) { patientName = pName; }
-    void setItemsDetails(string itm) { itemsDetails = itm; }
-    void setTotalAmount(double amount) { totalAmount = amount; }
-    void setIsPaid(bool paid) { isPaid = paid; }
+    void setBillID(int id){
+        billID = id;
+    }
+    void setPatientName(string pName){
+        patientName = pName;
+    }
+    void setItemsDetails(string itm){
+        itemsDetails = itm;
+    }
+    void setTotalAmount(double amount){
+        totalAmount = amount;
+    }
+    void setIsPaid(bool paid){
+        isPaid = paid;
+    }
 };
 // Prescription Node for Linked List
 class PrescriptionNode {
@@ -156,19 +200,43 @@ public:
         next = nxt;
     }
     // Getters
-    int getPrescriptionID() const { return prescriptionID; }
-    string getPatientName() const { return patientName; }
-    string getDoctorName() const { return doctorName; }
-    string getMedicineName() const { return medicineName; }
-    int getQuantity() const { return quantity; }
-    bool getIsFilled() const { return isFilled; }
+    int getPrescriptionID() const{
+        return prescriptionID;
+    }
+    string getPatientName() const{
+        return patientName;
+    }
+    string getDoctorName() const{
+        return doctorName;
+    }
+    string getMedicineName() const{
+        return medicineName;
+    }
+    int getQuantity() const{
+        return quantity;
+    }
+    bool getIsFilled()const{
+        return isFilled;
+    }
     // Setters
-    void setPrescriptionID(int id) { prescriptionID = id; }
-    void setPatientName(string pName) { patientName = pName; }
-    void setDoctorName(string dName) { doctorName = dName; }
-    void setMedicineName(string mName) { medicineName = mName; }
-    void setQuantity(int qty) { quantity = qty; }
-    void setIsFilled(bool filled) { isFilled = filled; }
+    void setPrescriptionID(int id){
+        prescriptionID = id;
+    }
+    void setPatientName(string pName){
+        patientName = pName;
+    }
+    void setDoctorName(string dName){
+        doctorName = dName;
+    }
+    void setMedicineName(string mName){
+        medicineName = mName;
+    }
+    void setQuantity(int qty){
+        quantity = qty;
+    }
+    void setIsFilled(bool filled){
+        isFilled = filled;
+    }
 };
 // Doctor Node Class for Linked List
 class DoctorNode {
@@ -191,19 +259,43 @@ public:
         next = nxt;
     }   
     // Setters
-    void setId(int i) { id = i; }
-    void setName(string n) { name = n; }
-    void setAge(int a) { age = a; }
-    void setSpecialization(string s) { specialization = s; }
-    void setUsername(string u) { username = u; }
-    void setPassword(string p) { password = p; }    
+    void setId(int i){
+        id = i;
+    }
+    void setName(string n){
+        name = n;
+    }
+    void setAge(int a){
+        age = a;
+    }
+    void setSpecialization(string s){
+        specialization = s;
+    }
+    void setUsername(string u){
+        username = u;
+    }
+    void setPassword(string p){
+        password = p;
+    }    
     // Getters
-    int getId() const { return id; }
-    string getName() const { return name; }
-    int getAge() const { return age; }
-    string getSpecialization() const { return specialization; }
-    string getUsername() const { return username; }
-    string getPassword() const { return password; }
+    int getId() const{
+        return id;
+    }
+    string getName() const{
+        return name;
+    }
+    int getAge() const{
+        return age;
+    }
+    string getSpecialization() const{
+        return specialization;
+    }
+    string getUsername() const{
+        return username;
+    }
+    string getPassword() const{
+        return password;
+    }
 };
 // Patient Node Class for Linked List
 class PatientNode {
@@ -226,19 +318,43 @@ public:
         next = nxt;
     } 
     // Setters
-    void setId(int i) { id = i; }
-    void setName(string n) { name = n; }
-    void setAge(int a) { age = a; }
-    void setDisease(string d) { disease = d; }
-    void setUsername(string u) { username = u; }
-    void setPassword(string p) { password = p; } 
+    void setId(int i){
+        id = i;
+    }
+    void setName(string n){
+        name = n;
+    }
+    void setAge(int a){
+        age = a;
+    }
+    void setDisease(string d){
+        disease = d;
+    }
+    void setUsername(string u){
+        username = u;
+    }
+    void setPassword(string p){
+        password = p;
+    } 
     // Getters
-    int getId() const { return id; }
-    string getName() const { return name; }
-    int getAge() const { return age; }
-    string getDisease() const { return disease; }
-    string getUsername() const { return username; }
-    string getPassword() const { return password; }
+    int getId() const{
+        return id;
+    }
+    string getName() const{
+        return name;
+    }
+    int getAge() const{
+        return age;
+    }
+    string getDisease() const{
+        return disease;
+    }
+    string getUsername() const{
+        return username;
+    }
+    string getPassword() const{
+        return password;
+    }
 };
 // Appointment Node Class for Queue
 class AppointmentNode {
@@ -1633,6 +1749,3 @@ int main() {
     } while (mainChoice != 6);
     return 0;
 }
-
-
-
