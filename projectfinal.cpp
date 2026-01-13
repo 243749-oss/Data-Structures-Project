@@ -6,23 +6,18 @@
 #include <sstream>
 
 using namespace std;
-
 // ===== INPUT VALIDATION HELPER FUNCTIONS =====
-
-// Function to safely get integer input with validation
 int getValidatedInt(const string& prompt) {
     int value;
     while (true) {
         cout << prompt;
         cin >> value;
-        
-        // Check if input failed (string entered instead of int)
         if (cin.fail()) {
             cin.clear(); // Clear error flags
             cin.ignore(10000, '\n'); // Discard invalid input
             cout << "\n? Invalid input! Please enter a number.\n\n";
         } else {
-            cin.ignore(); // Clear newline
+            cin.ignore();
             return value;
         }
     }
@@ -45,8 +40,7 @@ double getValidatedDouble(const string& prompt) {
     double value;
     while (true) {
         cout << prompt;
-        cin >> value;
-        
+        cin >> value; 
         if (cin.fail()) {
             cin.clear();
             cin.ignore(10000, '\n');
@@ -1878,3 +1872,4 @@ int main() {
     
     return 0;
 }
+
