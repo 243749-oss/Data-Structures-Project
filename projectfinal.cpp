@@ -4,7 +4,6 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
-
 using namespace std;
 // ===== INPUT VALIDATION HELPER FUNCTIONS =====
 int getValidatedInt(const string& prompt) {
@@ -22,7 +21,6 @@ int getValidatedInt(const string& prompt) {
         }
     }
 }
-
 // Function to safely get positive integer input
 int getValidatedPositiveInt(const string& prompt) {
     int value;
@@ -34,7 +32,6 @@ int getValidatedPositiveInt(const string& prompt) {
         cout << "\n? Please enter a positive number!\n\n";
     }
 }
-
 // Function to safely get double input with validation
 double getValidatedDouble(const string& prompt) {
     double value;
@@ -62,30 +59,24 @@ double getValidatedPositiveDouble(const string& prompt) {
         cout << "\n? Please enter a positive number!\n\n";
     }
 }
-
 // ===== NODE CLASSES WITH GETTERS/SETTERS =====
-
 // Action Node for Stack (System Reports)
 class ActionNode {
 private:
     string action;
-    string timestamp;
-    
+    string timestamp; 
 public:
-    ActionNode* next;
-    
+    ActionNode* next; 
     ActionNode(string act, string time, ActionNode* nxt = NULL) {
         action = act;
         timestamp = time;
         next = nxt;
     }
-    
     string getAction() const { return action; }
     string getTimestamp() const { return timestamp; }
     void setAction(string act) { action = act; }
     void setTimestamp(string time) { timestamp = time; }
 };
-
 // Medicine Node for Linked List
 class MedicineNode {
 private:
@@ -93,10 +84,8 @@ private:
     string name;
     int quantity;
     double price;
-    
 public:
     MedicineNode* next;
-    
     MedicineNode(int i, string n, int q, double p, MedicineNode* nxt = NULL) {
         id = i;
         name = n;
@@ -104,20 +93,17 @@ public:
         price = p;
         next = nxt;
     }
-    
     // Getters
     int getId() const { return id; }
     string getName() const { return name; }
     int getQuantity() const { return quantity; }
     double getPrice() const { return price; }
-    
     // Setters
     void setId(int i) { id = i; }
     void setName(string n) { name = n; }
     void setQuantity(int q) { quantity = q; }
     void setPrice(double p) { price = p; }
 };
-
 // Bill Node for Linked List
 class BillNode {
 private:
@@ -125,11 +111,9 @@ private:
     string patientName;
     string itemsDetails;
     double totalAmount;
-    bool isPaid;
-    
+    bool isPaid; 
 public:
-    BillNode* next;
-    
+    BillNode* next; 
     BillNode(int id, string pName, string itm, double amount, BillNode* nxt = NULL) {
         billID = id;
         patientName = pName;
@@ -137,15 +121,13 @@ public:
         totalAmount = amount;
         isPaid = false;
         next = nxt;
-    }
-    
+    } 
     // Getters
     int getBillID() const { return billID; }
     string getPatientName() const { return patientName; }
     string getItemsDetails() const { return itemsDetails; }
     double getTotalAmount() const { return totalAmount; }
-    bool getIsPaid() const { return isPaid; }
-    
+    bool getIsPaid() const { return isPaid; } 
     // Setters
     void setBillID(int id) { billID = id; }
     void setPatientName(string pName) { patientName = pName; }
@@ -153,7 +135,6 @@ public:
     void setTotalAmount(double amount) { totalAmount = amount; }
     void setIsPaid(bool paid) { isPaid = paid; }
 };
-
 // Prescription Node for Linked List
 class PrescriptionNode {
 private:
@@ -163,10 +144,8 @@ private:
     string medicineName;
     int quantity;
     bool isFilled;
-    
 public:
     PrescriptionNode* next;
-    
     PrescriptionNode(int id, string pName, string dName, string mName, int qty, PrescriptionNode* nxt = NULL) {
         prescriptionID = id;
         patientName = pName;
@@ -176,7 +155,6 @@ public:
         isFilled = false;
         next = nxt;
     }
-    
     // Getters
     int getPrescriptionID() const { return prescriptionID; }
     string getPatientName() const { return patientName; }
@@ -184,7 +162,6 @@ public:
     string getMedicineName() const { return medicineName; }
     int getQuantity() const { return quantity; }
     bool getIsFilled() const { return isFilled; }
-    
     // Setters
     void setPrescriptionID(int id) { prescriptionID = id; }
     void setPatientName(string pName) { patientName = pName; }
@@ -193,7 +170,6 @@ public:
     void setQuantity(int qty) { quantity = qty; }
     void setIsFilled(bool filled) { isFilled = filled; }
 };
-
 // Doctor Node Class for Linked List
 class DoctorNode {
 private:
@@ -203,10 +179,8 @@ private:
     string specialization;
     string username;
     string password;
-    
 public:
-    DoctorNode* next;
-    
+    DoctorNode* next; 
     DoctorNode(int i, string n, int a, string s, string u, string p, DoctorNode* nxt = NULL) {
         id = i;
         name = n;
@@ -215,16 +189,14 @@ public:
         username = u;
         password = p;
         next = nxt;
-    }
-    
+    }   
     // Setters
     void setId(int i) { id = i; }
     void setName(string n) { name = n; }
     void setAge(int a) { age = a; }
     void setSpecialization(string s) { specialization = s; }
     void setUsername(string u) { username = u; }
-    void setPassword(string p) { password = p; }
-    
+    void setPassword(string p) { password = p; }    
     // Getters
     int getId() const { return id; }
     string getName() const { return name; }
@@ -233,7 +205,6 @@ public:
     string getUsername() const { return username; }
     string getPassword() const { return password; }
 };
-
 // Patient Node Class for Linked List
 class PatientNode {
 private:
@@ -242,11 +213,9 @@ private:
     int age;
     string disease;
     string username;
-    string password;
-    
+    string password;    
 public:
-    PatientNode* next;
-    
+    PatientNode* next;    
     PatientNode(int i, string n, int a, string d, string u, string p, PatientNode* nxt = NULL) {
         id = i;
         name = n;
@@ -255,16 +224,14 @@ public:
         username = u;
         password = p;
         next = nxt;
-    }
-    
+    } 
     // Setters
     void setId(int i) { id = i; }
     void setName(string n) { name = n; }
     void setAge(int a) { age = a; }
     void setDisease(string d) { disease = d; }
     void setUsername(string u) { username = u; }
-    void setPassword(string p) { password = p; }
-    
+    void setPassword(string p) { password = p; } 
     // Getters
     int getId() const { return id; }
     string getName() const { return name; }
@@ -273,26 +240,22 @@ public:
     string getUsername() const { return username; }
     string getPassword() const { return password; }
 };
-
 // Appointment Node Class for Queue
 class AppointmentNode {
 private:
     int appointmentID;
     string patientName;
     string doctorName;
-    int priority;
-    
+    int priority;   
 public:
-    AppointmentNode* next;
-    
+    AppointmentNode* next;  
     AppointmentNode(int id, string pName, string dName, int pri, AppointmentNode* nxt = NULL) {
         appointmentID = id;
         patientName = pName;
         doctorName = dName;
         priority = pri;
         next = nxt;
-    }
-    
+    }   
     // Setters
     void setAppointmentID(int id){
         appointmentID = id; 
@@ -691,20 +654,16 @@ public:
     }
     void loadFromFile() {
         ifstream file("medicines.txt");
-        if (!file) return;
-        
+        if (!file) return;  
         int id, quantity;
         string name;
         double price;
-        char delimiter;
-        
+        char delimiter;     
         while (file >> id >> delimiter) {
             getline(file, name, '|');
             file >> quantity >> delimiter >> price;
-            file.ignore();
-            
-            MedicineNode* newNode = new MedicineNode(id, name, quantity, price, NULL);
-            
+            file.ignore();         
+            MedicineNode* newNode = new MedicineNode(id, name, quantity, price, NULL);           
             if (head == NULL) {
                 head = newNode;
             } else {
@@ -716,8 +675,7 @@ public:
             }
         }
         file.close();
-    }
-    
+    }    
     ~MedicineList() {
         while (head != NULL) {
             MedicineNode* temp = head;
@@ -726,22 +684,17 @@ public:
         }
     }
 };
-
 // ===== LINKED LIST FOR DOCTORS =====
 class DoctorList {
 private:
-    DoctorNode* head;
-    
+    DoctorNode* head;   
 public:
-    DoctorList() : head(NULL) {}
-    
+    DoctorList() : head(NULL) {}   
     bool addDoctor(int id, string name, int age, string spec, string user, string pass) {
         if (findByUsername(user) != NULL) {
             return false;
-        }
-        
-        DoctorNode* newNode = new DoctorNode(id, name, age, spec, user, pass, NULL);
-        
+        }       
+        DoctorNode* newNode = new DoctorNode(id, name, age, spec, user, pass, NULL);       
         if (head == NULL) {
             head = newNode;
         } else {
@@ -752,23 +705,19 @@ public:
             temp->next = newNode;
         }
         return true;
-    }
-    
+    }   
     bool removeDoctor(string username) {
         if (head == NULL) {
             return false;
-        }
-        
+        }    
         if (head->getUsername() == username) {
             DoctorNode* temp = head;
             head = head->next;
             delete temp;
             return true;
-        }
-        
+        }     
         DoctorNode* prev = head;
-        DoctorNode* curr = head->next;
-        
+        DoctorNode* curr = head->next;      
         while (curr != NULL) {
             if (curr->getUsername() == username) {
                 prev->next = curr->next;
@@ -780,8 +729,7 @@ public:
         }
         
         return false;
-    }
-    
+    }  
     DoctorNode* findByUsername(string username) {
         DoctorNode* temp = head;
         while (temp != NULL) {
@@ -791,8 +739,7 @@ public:
             temp = temp->next;
         }
         return NULL;
-    }
-    
+    }  
     DoctorNode* login(string username, string password) {
         DoctorNode* temp = head;
         while (temp != NULL) {
@@ -803,13 +750,11 @@ public:
         }
         return NULL;
     }
-    
     void display() {
         if (head == NULL) {
             cout << "No doctors registered.\n";
             return;
-        }
-        
+        }      
         cout << "\n===== DOCTORS LIST =====\n";
         DoctorNode* temp = head;
         while (temp != NULL) {
@@ -818,20 +763,17 @@ public:
                  << temp->getSpecialization() << " | Username: " << temp->getUsername() << endl;
             temp = temp->next;
         }
-    }
-    
+    }   
     bool isEmpty() {
         return head == NULL;
-    }
-    
+    }   
     // File handling
     void saveToFile() {
         ofstream file("doctors.txt");
         if (!file) {
             cout << "Error opening file!\n";
             return;
-        }
-        
+        }       
         DoctorNode* temp = head;
         while (temp != NULL) {
             file << temp->getId() << "|"
@@ -843,25 +785,20 @@ public:
             temp = temp->next;
         }
         file.close();
-    }
-    
+    }   
     void loadFromFile() {
         ifstream file("doctors.txt");
-        if (!file) return;
-        
+        if (!file) return;      
         int id, age;
         string name, spec, username, password;
-        char delimiter;
-        
+        char delimiter;      
         while (file >> id >> delimiter) {
             getline(file, name, '|');
             file >> age >> delimiter;
             getline(file, spec, '|');
             getline(file, username, '|');
-            getline(file, password);
-            
-            DoctorNode* newNode = new DoctorNode(id, name, age, spec, username, password, NULL);
-            
+            getline(file, password);          
+            DoctorNode* newNode = new DoctorNode(id, name, age, spec, username, password, NULL);          
             if (head == NULL) {
                 head = newNode;
             } else {
@@ -873,8 +810,7 @@ public:
             }
         }
         file.close();
-    }
-    
+    }  
     ~DoctorList() {
         while (head != NULL) {
             DoctorNode* temp = head;
@@ -883,22 +819,17 @@ public:
         }
     }
 };
-
 // ===== LINKED LIST FOR PATIENTS =====
 class PatientList {
 private:
-    PatientNode* head;
-    
+    PatientNode* head; 
 public:
-    PatientList() : head(NULL) {}
-    
+    PatientList() : head(NULL) {} 
     bool addPatient(int id, string name, int age, string disease, string user, string pass) {
         if (findByUsername(user) != NULL) {
             return false;
-        }
-        
-        PatientNode* newNode = new PatientNode(id, name, age, disease, user, pass, NULL);
-        
+        }    
+        PatientNode* newNode = new PatientNode(id, name, age, disease, user, pass, NULL);    
         if (head == NULL) {
             head = newNode;
         } else {
@@ -909,8 +840,7 @@ public:
             temp->next = newNode;
         }
         return true;
-    }
-    
+    } 
     PatientNode* findByUsername(string username) {
         PatientNode* temp = head;
         while (temp != NULL) {
@@ -920,8 +850,7 @@ public:
             temp = temp->next;
         }
         return NULL;
-    }
-    
+    } 
     PatientNode* login(string username, string password) {
         PatientNode* temp = head;
         while (temp != NULL) {
@@ -931,14 +860,12 @@ public:
             temp = temp->next;
         }
         return NULL;
-    }
-    
+    } 
     void display() {
         if (head == NULL) {
             cout << "No patients registered.\n";
             return;
-        }
-        
+        }   
         cout << "\n===== PATIENTS LIST =====\n";
         PatientNode* temp = head;
         while (temp != NULL) {
@@ -947,20 +874,17 @@ public:
                  << temp->getDisease() << endl;
             temp = temp->next;
         }
-    }
-    
+    } 
     bool isEmpty() {
         return head == NULL;
     }
-    
     // File handling
     void saveToFile() {
         ofstream file("patients.txt");
         if (!file) {
             cout << "Error opening file!\n";
             return;
-        }
-        
+        }    
         PatientNode* temp = head;
         while (temp != NULL) {
             file << temp->getId() << "|"
@@ -972,25 +896,20 @@ public:
             temp = temp->next;
         }
         file.close();
-    }
-    
+    } 
     void loadFromFile() {
         ifstream file("patients.txt");
-        if (!file) return;
-        
+        if (!file) return;  
         int id, age;
         string name, disease, username, password;
-        char delimiter;
-        
+        char delimiter;  
         while (file >> id >> delimiter) {
             getline(file, name, '|');
             file >> age >> delimiter;
             getline(file, disease, '|');
             getline(file, username, '|');
-            getline(file, password);
-            
+            getline(file, password);  
             PatientNode* newNode = new PatientNode(id, name, age, disease, username, password, NULL);
-            
             if (head == NULL) {
                 head = newNode;
             } else {
@@ -1002,8 +921,7 @@ public:
             }
         }
         file.close();
-    }
-    
+    }   
     ~PatientList() {
         while (head != NULL) {
             PatientNode* temp = head;
@@ -1012,19 +930,15 @@ public:
         }
     }
 };
-
 // ===== QUEUE FOR APPOINTMENTS =====
 class AppointmentQueue {
 private:
     AppointmentNode* front;
-    AppointmentNode* rear;
-    
+    AppointmentNode* rear; 
 public:
-    AppointmentQueue() : front(NULL), rear(NULL) {}
-    
+    AppointmentQueue() : front(NULL), rear(NULL) {} 
     void enqueue(int id, string patient, string doctor, int priority) {
-        AppointmentNode* newNode = new AppointmentNode(id, patient, doctor, priority, NULL);
-        
+        AppointmentNode* newNode = new AppointmentNode(id, patient, doctor, priority, NULL);   
         if (rear == NULL) {
             front = rear = newNode;
         } else {
@@ -1032,12 +946,10 @@ public:
             rear = newNode;
         }
     }
-    
     bool dequeue(int position) {
         if (front == NULL) {
             return false;
-        }
-        
+        }  
         if (position == 1) {
             AppointmentNode* temp = front;
             front = front->next;
@@ -1046,36 +958,30 @@ public:
             }
             delete temp;
             return true;
-        }
-        
+        }  
         AppointmentNode* prev = front;
         AppointmentNode* curr = front->next;
-        int count = 2;
-        
+        int count = 2;   
         while (curr != NULL && count < position) {
             prev = curr;
             curr = curr->next;
             count++;
-        }
-        
+        }    
         if (curr == NULL) {
             return false;
-        }
-        
+        }   
         prev->next = curr->next;
         if (curr == rear) {
             rear = prev;
         }
         delete curr;
         return true;
-    }
-    
+    } 
     void display() {
         if (front == NULL) {
             cout << "No appointments.\n";
             return;
-        }
-        
+        }    
         AppointmentNode* temp = front;
         int count = 1;
         while (temp != NULL) {
@@ -1087,12 +993,10 @@ public:
             temp = temp->next;
             count++;
         }
-    }
-    
+    }  
     bool isEmpty() {
         return front == NULL;
-    }
-    
+    }  
     int getCount() {
         int count = 0;
         AppointmentNode* temp = front;
@@ -1101,8 +1005,7 @@ public:
             temp = temp->next;
         }
         return count;
-    }
-    
+    }   
     ~AppointmentQueue() {
         while (front != NULL) {
             AppointmentNode* temp = front;
@@ -1111,7 +1014,6 @@ public:
         }
     }
 };
-
 // ===== HOSPITAL MANAGEMENT SYSTEM =====
 class HospitalSystem {
 private:
@@ -1123,7 +1025,6 @@ private:
     PrescriptionList prescriptions;
     BillList bills;
     ActionStack actionLog;
-    
 public:
     HospitalSystem() {
         doctors.loadFromFile();
@@ -1132,7 +1033,6 @@ public:
         prescriptions.loadFromFile();
         bills.loadFromFile();
     }
-    
     ~HospitalSystem() {
         doctors.saveToFile();
         patients.saveToFile();
@@ -1140,14 +1040,11 @@ public:
         prescriptions.saveToFile();
         bills.saveToFile();
     }
-    
     void adminAddDoctor() {
         system("cls");
         cout << "\n===== ADD DOCTOR (ADMIN) =====\n";
-        
         int id, age;
         string name, spec, username, password;
-        
         id = getValidatedPositiveInt("Enter Doctor ID: ");
         cin.ignore();
         cout << "Enter Full Name: ";
@@ -1159,8 +1056,7 @@ public:
         cout << "Create Username: ";
         getline(cin, username);
         cout << "Create Password: ";
-        getline(cin, password);
-        
+        getline(cin, password);  
         if (doctors.addDoctor(id, name, age, spec, username, password)) {
             cout << "\n? Doctor added successfully by Admin!\n";
             actionLog.push("Admin added Doctor: " + name + " (ID: " + to_string(id) + ")");
@@ -1170,24 +1066,19 @@ public:
         }
         system("pause");
     }
-    
     void adminRemoveDoctor() {
         system("cls");
         cout << "\n===== REMOVE DOCTOR (ADMIN) =====\n";
-        
         if (doctors.isEmpty()) {
             cout << "No doctors to remove.\n";
             system("pause");
             return;
         }
-        
         doctors.display();
-        
         string username;
         cout << "\nEnter username of doctor to remove: ";
         cin.ignore();
-        getline(cin, username);
-        
+        getline(cin, username); 
         if (doctors.removeDoctor(username)) {
             cout << "\n? Doctor removed successfully!\n";
             actionLog.push("Admin removed Doctor with username: " + username);
@@ -1197,40 +1088,34 @@ public:
         }
         system("pause");
     }
-    
     void viewMedicines() {
         system("cls");
         medicines.display();
         system("pause");
     }
-    
     void addOrRestockMedicine() {
         system("cls");
         cout << "\n===== ADD/RESTOCK MEDICINE =====\n";
         cout << "1. Add New Medicine\n";
         cout << "2. Restock Existing Medicine\n";
         int choice = getValidatedInt("Enter choice: ");
-        
         if (choice == 1) {
             int id, quantity;
             string name;
-            double price;
-            
+            double price; 
             id = getValidatedPositiveInt("\nEnter Medicine ID: ");
             cin.ignore();
             cout << "Enter Medicine Name: ";
             getline(cin, name);
             quantity = getValidatedPositiveInt("Enter Initial Quantity: ");
             price = getValidatedPositiveDouble("Enter Price per Unit: $");
-            
             if (medicines.addMedicine(id, name, quantity, price)) {
                 cout << "\n? Medicine added successfully!\n";
                 actionLog.push("Medicine added: " + name + " (ID: " + to_string(id) + ")");
                 medicines.saveToFile();
             }
         } else if (choice == 2) {
-            medicines.display();
-            
+            medicines.display();   
             int id, quantity;
             id = getValidatedPositiveInt("\nEnter Medicine ID to restock: ");
             quantity = getValidatedPositiveInt("Enter quantity to add: ");
@@ -1245,51 +1130,40 @@ public:
         }
         system("pause");
     }
-    
     void generateBill() {
         system("cls");
         cout << "\n===== GENERATE BILL =====\n";
-        
         if (medicines.isEmpty()) {
             cout << "No medicines available in inventory.\n";
             system("pause");
             return;
         }
-        
         int billID = rand() % 10000 + 1000;
         string patientName;
-        
         cout << "Enter Patient Name: ";
         cin.ignore();
         getline(cin, patientName);
-        
         cout << "\n--- Available Medicines ---\n";
         medicines.display();
-        
         double totalAmount = 0;
         stringstream itemDetails;
         itemDetails << "MEDICINES PURCHASED:\n";
         itemDetails << "-----------------------------------\n";
-        
         int numMedicines = getValidatedPositiveInt("\nHow many different medicines to add? ");
         cin.ignore();
-        
         for (int i = 0; i < numMedicines; i++) {
             cout << "\n--- Medicine " << (i + 1) << " ---\n";
             string medName;
             int quantity;
-            
             cout << "Medicine Name: ";
             getline(cin, medName);
             quantity = getValidatedPositiveInt("Quantity: ");
             cin.ignore();
-            
             MedicineNode* med = medicines.findByName(medName);
             if (med != NULL) {
                 if (med->getQuantity() >= quantity) {
                     double subtotal = med->getPrice() * quantity;
-                    totalAmount += subtotal;
-                    
+                    totalAmount += subtotal; 
                     itemDetails << (i + 1) << ". " << medName 
                                << " x " << quantity 
                                << " @ $" << med->getPrice() 
@@ -1302,50 +1176,39 @@ public:
                 cout << "? Medicine not found!\n";
                 i--;
             }
-        }
-        
+        } 
         itemDetails << "-----------------------------------\n";
-        
         bills.addBill(billID, patientName, itemDetails.str(), totalAmount);
         cout << "\n? Bill generated successfully!\n";
         cout << "Bill ID: " << billID << "\n";
         cout << "Total Amount: $" << totalAmount << "\n";
-        cout << "\n? Note: Medicine quantities will be deducted after payment.\n";
-        
+        cout << "\n? Note: Medicine quantities will be deducted after payment.\n"; 
         actionLog.push("Bill generated for " + patientName + " - Amount: $" + to_string(totalAmount));
         bills.saveToFile();
         system("pause");
     }
-    
     void processPayment() {
         system("cls");
         cout << "\n===== PROCESS PAYMENT =====\n";
-        
         if (bills.isEmpty()) {
             cout << "No bills available.\n";
             system("pause");
             return;
         }
-        
         bills.displayUnpaid();
-        
         int billID = getValidatedInt("\nEnter Bill ID to process (0 to cancel): ");
-        
-        if (billID == 0) return;
-        
+        if (billID == 0) return; 
         BillNode* bill = bills.findById(billID);
         if (bill == NULL) {
             cout << "\n? Bill not found!\n";
             system("pause");
             return;
         }
-        
         if (bill->getIsPaid()) {
             cout << "\n? This bill is already paid!\n";
             system("pause");
             return;
-        }
-        
+        } 
         cout << "\n========================================\n";
         cout << "BILL DETAILS:\n";
         cout << "========================================\n";
@@ -1353,39 +1216,31 @@ public:
         cout << bill->getItemsDetails();
         cout << "TOTAL AMOUNT DUE: $" << bill->getTotalAmount() << "\n";
         cout << "========================================\n";
-        
         int confirm = getValidatedInt("\nConfirm payment? (1=Yes, 0=No): ");
-        
         if (confirm == 1) {
             string items = bill->getItemsDetails();
             istringstream iss(items);
             string line;
-            bool success = true;
-            
+            bool success = true; 
             getline(iss, line);
             getline(iss, line);
-            
             while (getline(iss, line)) {
                 if (line.find("---") != string::npos || line.empty()) continue;
                 
                 size_t xPos = line.find(" x ");
-                size_t atPos = line.find(" @ ");
-                
+                size_t atPos = line.find(" @ ");  
                 if (xPos != string::npos && atPos != string::npos) {
                     size_t nameStart = line.find(". ") + 2;
-                    string medName = line.substr(nameStart, xPos - nameStart);
-                    
+                    string medName = line.substr(nameStart, xPos - nameStart);  
                     size_t qtyStart = xPos + 3;
                     string qtyStr = line.substr(qtyStart, atPos - qtyStart);
-                    int quantity = stoi(qtyStr);
-                    
+                    int quantity = stoi(qtyStr); 
                     if (!medicines.dispenseMedicine(medName, quantity)) {
                         cout << "\n? Error deducting " << medName << " from inventory!\n";
                         success = false;
                     }
                 }
-            }
-            
+            } 
             if (success) {
                 bill->setIsPaid(true);
                 cout << "\n? Payment processed successfully!\n";
@@ -1398,32 +1253,25 @@ public:
             }
         } else {
             cout << "\nPayment cancelled.\n";
-        }
-        
+        } 
         system("pause");
     }
-    
     void viewActionStack() {
         system("cls");
         actionLog.display();
         system("pause");
     }
-    
     void createPrescription(string doctorName) {
         system("cls");
         cout << "\n===== CREATE PRESCRIPTION =====\n";
-        
         int prescID = rand() % 10000 + 1000;
         string patientName, medicineName;
         int quantity;
-        
         cout << "Enter Patient Name: ";
         cin.ignore();
         getline(cin, patientName);
-        
         cout << "\n--- Available Medicines ---\n";
         medicines.display();
-        
         cout << "\nEnter Medicine Name: ";
         getline(cin, medicineName);
         quantity = getValidatedPositiveInt("Enter Quantity: ");
@@ -1435,13 +1283,11 @@ public:
         prescriptions.saveToFile();
         system("pause");
     }
-    
     void viewAllPrescriptions() {
         system("cls");
         prescriptions.displayAll();
         system("pause");
     }
-    
     bool registerPatient() {
         system("cls");
         string tempUsername;
@@ -1449,16 +1295,13 @@ public:
         cout << "Create Username: ";
         cin.ignore();
         getline(cin, tempUsername);
-        
         if (patients.findByUsername(tempUsername) != NULL) {
             cout << "\n? Username already exists!\n";
             system("pause");
             return false;
         }
-        
         int id, age;
         string name, disease, pass;
-        
         id = getValidatedPositiveInt("Enter Patient ID: ");
         cin.ignore();
         cout << "Enter Full Name: ";
@@ -1480,23 +1323,18 @@ public:
         system("pause");
         return false;
     }
-    
     PatientNode* loginPatient(string username, string password) {
         return patients.login(username, password);
     }
-    
     DoctorNode* loginDoctor(string username, string password) {
         return doctors.login(username, password);
     }
-    
     void viewDoctors() {
         doctors.display();
     }
-    
     void viewPatients() {
         patients.display();
     }
-    
     void bookNormalAppointment(string patientName) {
         system("cls");
         if (doctors.isEmpty()) {
@@ -1504,23 +1342,19 @@ public:
             system("pause");
             return;
         }
-        
         int apptID = rand() % 10000 + 1000;
         string doctorName;
-        
         cout << "\n--- Available Doctors ---\n";
         viewDoctors();
         cout << "\nEnter Doctor Name: ";
         cin.ignore();
         getline(cin, doctorName);
-        
         normalQueue.enqueue(apptID, patientName, doctorName, 1);
         cout << "\n? Normal appointment booked!\n";
         cout << "Appointment ID: " << apptID << "\n";
         actionLog.push("Normal appointment booked - Patient: " + patientName);
         system("pause");
     }
-    
     void bookEmergencyAppointment(string patientName) {
         system("cls");
         if (doctors.isEmpty()) {
@@ -1528,7 +1362,6 @@ public:
             system("pause");
             return;
         }
-        
         int apptID = rand() % 10000 + 1000;
         string doctorName;
         
@@ -1544,21 +1377,18 @@ public:
         actionLog.push("Emergency appointment booked - Patient: " + patientName);
         system("pause");
     }
-    
     void viewNormalAppointments() {
         system("cls");
         cout << "\n--- NORMAL APPOINTMENTS ---\n";
         normalQueue.display();
         system("pause");
     }
-    
     void viewEmergencyAppointments() {
         system("cls");
         cout << "\n--- EMERGENCY APPOINTMENTS ---\n";
         emergencyQueue.display();
         system("pause");
     }
-    
     void viewAllAppointments() {
         system("cls");
         cout << "\n--- EMERGENCY APPOINTMENTS ---\n";
@@ -1567,15 +1397,13 @@ public:
         normalQueue.display();
         system("pause");
     }
-    
     bool treatEmergencyAppointment() {
         system("cls");
         if (emergencyQueue.isEmpty()) {
             cout << "\n? No emergency appointments.\n";
             system("pause");
             return false;
-        }
-        
+        }  
         cout << "\n--- EMERGENCY APPOINTMENTS ---\n";
         emergencyQueue.display();
         
@@ -1592,7 +1420,6 @@ public:
         system("pause");
         return false;
     }
-    
     bool treatNormalAppointment() {
         system("cls");
         if (normalQueue.isEmpty()) {
@@ -1600,7 +1427,6 @@ public:
             system("pause");
             return false;
         }
-        
         cout << "\n--- NORMAL APPOINTMENTS ---\n";
         normalQueue.display();
         
@@ -1618,15 +1444,12 @@ public:
         return false;
     }
 };
-
 // ===== MAIN FUNCTION =====
 int main() {
     srand(time(0));
-    
     HospitalSystem hospital;
     int mainChoice, subChoice;
     string username, password;
-    
     do {
         system("cls");
         cout << "\n========================================\n";
@@ -1640,7 +1463,6 @@ int main() {
         cout << "6. Exit System\n";
         cout << "========================================\n";
         mainChoice = getValidatedInt("Enter choice: ");
-        
         switch (mainChoice) {
             case 1: {
                 system("cls");
@@ -1649,11 +1471,9 @@ int main() {
                 cin >> username;
                 cout << "Password: ";
                 cin >> password;
-                
                 if (username == "admin" && password == "admin123") {
                     cout << "\n? Login successful!\n";
-                    system("pause");
-                    
+                    system("pause");  
                     do {
                         system("cls");
                         cout << "\n===== ADMIN DASHBOARD =====\n";
@@ -1664,8 +1484,7 @@ int main() {
                         cout << "5. System Reports\n";
                         cout << "6. Medicine Management\n";
                         cout << "0. Logout\n";
-                        subChoice = getValidatedInt("Enter choice: ");
-                        
+                        subChoice = getValidatedInt("Enter choice: ");      
                         switch (subChoice) {
                             case 1:
                                 hospital.adminAddDoctor();
@@ -1697,20 +1516,17 @@ int main() {
                 }
                 break;
             }
-            
             case 2: {
                 system("cls");
                 cout << "\n===== DOCTOR LOGIN =====\n";
                 cout << "Username: ";
                 cin >> username;
                 cout << "Password: ";
-                cin >> password;
-                
+                cin >> password;      
                 DoctorNode* doctor = hospital.loginDoctor(username, password);
                 if (doctor != NULL) {
                     cout << "\n? Welcome, Dr. " << doctor->getName() << "!\n";
                     system("pause");
-                    
                     do {
                         system("cls");
                         cout << "\n===== DOCTOR DASHBOARD =====\n";
@@ -1724,7 +1540,6 @@ int main() {
                         cout << "7. View Prescriptions\n";
                         cout << "0. Logout\n";
                         subChoice = getValidatedInt("Enter choice: ");
-                        
                         switch (subChoice) {
                             case 1: hospital.viewEmergencyAppointments(); break;
                             case 2: hospital.viewNormalAppointments(); break;
@@ -1741,7 +1556,6 @@ int main() {
                 }
                 break;
             }
-            
             case 3: {
                 system("cls");
                 cout << "\n===== PATIENT LOGIN =====\n";
@@ -1749,12 +1563,10 @@ int main() {
                 cin >> username;
                 cout << "Password: ";
                 cin >> password;
-                
                 PatientNode* patient = hospital.loginPatient(username, password);
                 if (patient != NULL) {
                     cout << "\n? Welcome, " << patient->getName() << "!\n";
                     system("pause");
-                    
                     do {
                         system("cls");
                         cout << "\n===== PATIENT DASHBOARD =====\n";
@@ -1775,7 +1587,6 @@ int main() {
                 }
                 break;
             }
-            
             case 4:
                 hospital.registerPatient();
                 break;
@@ -1791,7 +1602,6 @@ int main() {
                     cout << "0. Return to Main Menu\n";
                     cout << "===========================\n";
                     subChoice = getValidatedInt("Enter choice: ");
-                    
                     switch (subChoice) {
                         case 1: 
                             hospital.viewMedicines(); 
@@ -1815,15 +1625,14 @@ int main() {
                 } while (subChoice != 0);
                 break;
             }
-            
             case 6:
                 cout << "\n? Thank you for using H.M.S.!\n";
                 system("pause");
                 break;
         }
     } while (mainChoice != 6);
-    
     return 0;
 }
+
 
 
