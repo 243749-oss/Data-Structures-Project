@@ -51,7 +51,6 @@ double getValidatedDouble(const string& prompt) {
         }
     }
 }
-
 // Function to safely get positive double input
 double getValidatedPositiveDouble(const string& prompt) {
     double value;
@@ -295,45 +294,52 @@ public:
     }
     
     // Setters
-    void setAppointmentID(int id) { appointmentID = id; }
-    void setPatientName(string pName) { patientName = pName; }
-    void setDoctorName(string dName) { doctorName = dName; }
-    void setPriority(int pri) { priority = pri; }
-    
-    // Getters
-    int getAppointmentID() const { return appointmentID; }
-    string getPatientName() const { return patientName; }
-    string getDoctorName() const { return doctorName; }
-    int getPriority() const { return priority; }
+    void setAppointmentID(int id){
+        appointmentID = id; 
+    }
+    void setPatientName(string pName){
+        patientName = pName;
+    }
+    void setDoctorName(string dName){
+        doctorName = dName;
+    }
+    void setPriority(int pri){
+        priority = pri;
+    }
+    int getAppointmentID() const{
+        return appointmentID;
+    }
+    string getPatientName() const{
+        return patientName;
+    }
+    string getDoctorName() const{
+        return doctorName;
+    }
+    int getPriority() const{
+        return priority;
+    }
 };
-
 // ===== STACK FOR ACTION TRACKING =====
 class ActionStack {
 private:
-    ActionNode* top;
-    
+    ActionNode* top; 
 public:
     ActionStack() : top(NULL) {}
-    
     void push(string action) {
         time_t now = time(0);
         string timestamp = ctime(&now);
-        timestamp.pop_back();
-        
+        timestamp.pop_back(); 
         ActionNode* newNode = new ActionNode(action, timestamp, top);
         top = newNode;
     }
-    
     void display() {
         if (top == NULL) {
             cout << "No actions recorded yet.\n";
             return;
         }
-        
         cout << "\n===== SYSTEM REPORTS (Action Stack) =====\n";
         cout << "Recent Actions (Most Recent First):\n";
         cout << "----------------------------------------\n";
-        
         ActionNode* temp = top;
         int count = 1;
         while (temp != NULL) {
@@ -343,7 +349,6 @@ public:
             count++;
         }
     }
-    
     ~ActionStack() {
         while (top != NULL) {
             ActionNode* temp = top;
@@ -352,18 +357,15 @@ public:
         }
     }
 };
-
 // ===== LINKED LIST FOR PRESCRIPTIONS =====
 class PrescriptionList {
 private:
     PrescriptionNode* head;
-    
 public:
     PrescriptionList() : head(NULL) {}
     
     void addPrescription(int id, string patient, string doctor, string medicine, int quantity) {
         PrescriptionNode* newNode = new PrescriptionNode(id, patient, doctor, medicine, quantity, NULL);
-        
         if (head == NULL) {
             head = newNode;
         } else {
@@ -374,27 +376,24 @@ public:
             temp->next = newNode;
         }
     }
-    
-    PrescriptionNode* findById(int id) {
+    PrescriptionNode* findById(int id){
         PrescriptionNode* temp = head;
-        while (temp != NULL) {
-            if (temp->getPrescriptionID() == id) {
+        while (temp != NULL){
+            if (temp->getPrescriptionID() == id){
                 return temp;
             }
-            temp = temp->next;
+            temp=temp->next;
         }
         return NULL;
     }
     
-    void displayAll() {
-        if (head == NULL) {
-            cout << "No prescriptions available.\n";
+    void displayAll(){
+        if (head == NULL){
+            cout<<"No prescriptions available.\n";
             return;
-        }
-        
+        }  
         cout << "\n===== ALL PRESCRIPTIONS =====\n";
         PrescriptionNode* temp = head;
-        
         while (temp != NULL) {
             cout << "Prescription ID: " << temp->getPrescriptionID() << "\n";
             cout << "Patient: " << temp->getPatientName() << "\n";
@@ -406,11 +405,9 @@ public:
             temp = temp->next;
         }
     }
-    
     bool isEmpty() {
         return head == NULL;
     }
-    
     // File handling
     void saveToFile() {
         ofstream file("prescriptions.txt");
@@ -418,7 +415,6 @@ public:
             cout << "Error opening file!\n";
             return;
         }
-        
         PrescriptionNode* temp = head;
         while (temp != NULL) {
             file << temp->getPrescriptionID() << "|"
@@ -431,26 +427,21 @@ public:
         }
         file.close();
     }
-    
     void loadFromFile() {
         ifstream file("prescriptions.txt");
         if (!file) return;
-        
         int id, quantity;
         string patient, doctor, medicine;
         bool filled;
         char delimiter;
-        
-        while (file >> id >> delimiter) {
+        while (file >> id >> delimiter){
             getline(file, patient, '|');
             getline(file, doctor, '|');
             getline(file, medicine, '|');
-            file >> quantity >> delimiter >> filled;
+            file>>quantity>>delimiter>>filled;
             file.ignore();
-            
             PrescriptionNode* newNode = new PrescriptionNode(id, patient, doctor, medicine, quantity, NULL);
             newNode->setIsFilled(filled);
-            
             if (head == NULL) {
                 head = newNode;
             } else {
@@ -463,8 +454,7 @@ public:
         }
         file.close();
     }
-    
-    ~PrescriptionList() {
+    ~PrescriptionList() {   // destructor
         while (head != NULL) {
             PrescriptionNode* temp = head;
             head = head->next;
@@ -472,32 +462,27 @@ public:
         }
     }
 };
-
 // ===== LINKED LIST FOR BILLS =====
 class BillList {
 private:
-    BillNode* head;
-    
+    BillNode* head;   
 public:
-    BillList() : head(NULL) {}
-    
-    void addBill(int id, string patient, string items, double amount) {
+    BillList():head(NULL) {}
+    void addBill(int id, string patient, string items, double amount){
         BillNode* newNode = new BillNode(id, patient, items, amount, NULL);
-        
         if (head == NULL) {
             head = newNode;
         } else {
             BillNode* temp = head;
-            while (temp->next != NULL) {
+            while (temp->next != NULL){
                 temp = temp->next;
             }
             temp->next = newNode;
         }
     }
-    
-    BillNode* findById(int id) {
+    BillNode* findById(int id){
         BillNode* temp = head;
-        while (temp != NULL) {
+        while (temp != NULL){
             if (temp->getBillID() == id) {
                 return temp;
             }
@@ -505,25 +490,23 @@ public:
         }
         return NULL;
     }
-    
-    void displayUnpaid() {
-        if (head == NULL) {
-            cout << "No bills available.\n";
+    void displayUnpaid(){
+        if (head == NULL){
+            cout<<"No bills available.\n";
             return;
         }
-        
         cout << "\n===== UNPAID BILLS =====\n";
         bool found = false;
         BillNode* temp = head;
         
-        while (temp != NULL) {
-            if (!temp->getIsPaid()) {
-                cout << "Bill ID: " << temp->getBillID() << "\n";
-                cout << "Patient: " << temp->getPatientName() << "\n";
-                cout << "Items:\n" << temp->getItemsDetails() << "\n";
-                cout << "Total Amount: $" << temp->getTotalAmount() << "\n";
-                cout << "Status: Unpaid\n";
-                cout << "========================================\n";
+        while (temp != NULL){
+            if (!temp->getIsPaid()){
+                cout<<"Bill ID: " << temp->getBillID() << "\n";
+                cout<<"Patient: " << temp->getPatientName() << "\n";
+                cout<<"Items:\n" << temp->getItemsDetails() << "\n";
+                cout<<"Total Amount: $" << temp->getTotalAmount() << "\n";
+                cout<<"Status: Unpaid\n";
+                cout<<"========================================\n";
                 found = true;
             }
             temp = temp->next;
@@ -533,16 +516,13 @@ public:
             cout << "No unpaid bills.\n";
         }
     }
-    
-    void displayAll() {
-        if (head == NULL) {
-            cout << "No bills available.\n";
+    void displayAll(){
+        if (head == NULL){
+            cout<<"No bills available.\n";
             return;
         }
-        
-        cout << "\n===== ALL BILLS =====\n";
+        cout<<"\n===== ALL BILLS =====\n";
         BillNode* temp = head;
-        
         while (temp != NULL) {
             cout << "Bill ID: " << temp->getBillID() << "\n";
             cout << "Patient: " << temp->getPatientName() << "\n";
@@ -553,41 +533,35 @@ public:
             temp = temp->next;
         }
     }
-    
     bool isEmpty() {
         return head == NULL;
     }
-    
     // File handling
     void saveToFile() {
         ofstream file("bills.txt");
         if (!file) {
             cout << "Error opening file!\n";
             return;
-        }
-        
+        }  
         BillNode* temp = head;
         while (temp != NULL) {
-            file << temp->getBillID() << "|"
-                 << temp->getPatientName() << "|"
-                 << temp->getItemsDetails() << "|"
-                 << temp->getTotalAmount() << "|"
-                 << temp->getIsPaid() << "\n";
+            file <<temp->getBillID() << "|"
+                 <<temp->getPatientName() << "|"
+                 <<temp->getItemsDetails() << "|"
+                 <<temp->getTotalAmount() << "|"
+                 <<temp->getIsPaid() << "\n";
             temp = temp->next;
         }
         file.close();
     }
-    
     void loadFromFile() {
         ifstream file("bills.txt");
         if (!file) return;
-        
         int id;
         string patient, items;
         double amount;
         bool paid;
         char delimiter;
-        
         while (file >> id >> delimiter) {
             getline(file, patient, '|');
             getline(file, items, '|');
@@ -596,7 +570,6 @@ public:
             
             BillNode* newNode = new BillNode(id, patient, items, amount, NULL);
             newNode->setIsPaid(paid);
-            
             if (head == NULL) {
                 head = newNode;
             } else {
@@ -609,7 +582,6 @@ public:
         }
         file.close();
     }
-    
     ~BillList() {
         while (head != NULL) {
             BillNode* temp = head;
@@ -618,24 +590,19 @@ public:
         }
     }
 };
-
 // ===== LINKED LIST FOR MEDICINES =====
 class MedicineList {
 private:
     MedicineNode* head;
-    
 public:
     MedicineList() : head(NULL) {}
-    
     bool addMedicine(int id, string name, int quantity, double price) {
         MedicineNode* existing = findById(id);
         if (existing != NULL) {
             cout << "\n? Medicine with ID " << id << " already exists!\n";
             return false;
-        }
-        
+        } 
         MedicineNode* newNode = new MedicineNode(id, name, quantity, price, NULL);
-        
         if (head == NULL) {
             head = newNode;
         } else {
@@ -647,7 +614,6 @@ public:
         }
         return true;
     }
-    
     MedicineNode* findById(int id) {
         MedicineNode* temp = head;
         while (temp != NULL) {
@@ -658,7 +624,6 @@ public:
         }
         return NULL;
     }
-    
     MedicineNode* findByName(string name) {
         MedicineNode* temp = head;
         while (temp != NULL) {
@@ -669,42 +634,34 @@ public:
         }
         return NULL;
     }
-    
     bool restockMedicine(int id, int additionalQuantity) {
         MedicineNode* medicine = findById(id);
         if (medicine == NULL) {
             return false;
         }
-        
         medicine->setQuantity(medicine->getQuantity() + additionalQuantity);
         return true;
     }
-    
     bool dispenseMedicine(string name, int quantity) {
         MedicineNode* medicine = findByName(name);
         if (medicine == NULL) {
             return false;
-        }
-        
+        } 
         if (medicine->getQuantity() < quantity) {
             cout << "\n? Insufficient stock! Available: " << medicine->getQuantity() << "\n";
             return false;
-        }
-        
+        } 
         medicine->setQuantity(medicine->getQuantity() - quantity);
         return true;
     }
-    
     void display() {
         if (head == NULL) {
             cout << "No medicines in inventory.\n";
             return;
-        }
-        
+        } 
         cout << "\n===== MEDICINE INVENTORY =====\n";
         cout << "ID\tName\t\t\tQuantity\tPrice\n";
         cout << "--------------------------------------------------------\n";
-        
         MedicineNode* temp = head;
         while (temp != NULL) {
             cout << temp->getId() << "\t" << temp->getName() << "\t\t\t" 
@@ -712,19 +669,16 @@ public:
             temp = temp->next;
         }
     }
-    
     bool isEmpty() {
         return head == NULL;
     }
-    
     // File handling
     void saveToFile() {
         ofstream file("medicines.txt");
         if (!file) {
             cout << "Error opening file!\n";
             return;
-        }
-        
+        }  
         MedicineNode* temp = head;
         while (temp != NULL) {
             file << temp->getId() << "|"
@@ -735,7 +689,6 @@ public:
         }
         file.close();
     }
-    
     void loadFromFile() {
         ifstream file("medicines.txt");
         if (!file) return;
@@ -1872,4 +1825,5 @@ int main() {
     
     return 0;
 }
+
 
